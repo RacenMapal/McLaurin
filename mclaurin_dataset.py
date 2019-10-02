@@ -13,7 +13,7 @@ random.rand --->distribuzione uniforme
 random.randn--->distribuzioine normale
 '''
 normal_labels=np.array(np.random.randn(10000,4), dtype=np.float32)
-uniform_labels = np.array(np.random.randn(10000,4), dtype=np.float32)
+uniform_labels = np.array(np.random.rand(10000,4), dtype=np.float32)
 labels = np.concatenate((normal_labels, uniform_labels))
 train_x=np.zeros(shape=(20000,200),dtype=np.float32)
 step=0

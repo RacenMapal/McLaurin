@@ -13,8 +13,8 @@ random.rand --->distribuzione uniforme
 random.randn--->distribuzioine normale
 '''
 def create_dataset(number):
-  normal_labels=np.array(np.random.randn(number/2,4), dtype=np.float32)
-  uniform_labels = np.array(np.random.rand(number/2,4), dtype=np.float32)
+  normal_labels=np.array(np.random.randn(int(number/2),4), dtype=np.float32)
+  uniform_labels = np.array(np.random.rand(int(number/2),4), dtype=np.float32)
   labels = np.concatenate((normal_labels, uniform_labels))
   data_x=np.zeros(shape=(number,200),dtype=np.float32)
   step=0

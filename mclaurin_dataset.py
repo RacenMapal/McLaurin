@@ -30,7 +30,6 @@ def create_dataset(number):
         x=round(x+0.01,2)  
       print(step)
       data_x[step]=campioni
-      print(step)
       step=step+1
   return labels, data_x
 #DATI DI TRAINING

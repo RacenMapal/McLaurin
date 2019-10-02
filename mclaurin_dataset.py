@@ -2,7 +2,7 @@ import numpy as np
 #DATASET
 '''
 input alla rete neurale McLaurin: 
-a0+(a1*x)+(a2*x^2)+(a3*x^3) per x = -1,-0.9,...,1 (21 numeri campione)
+a0+(a1*x)+(a2*x^2)+(a3*x^3) per x = -1,-0.9,...,1 ---->200 campioni di questa funzione
 
 output desiderato:
 (a0,a1,a2,a3)

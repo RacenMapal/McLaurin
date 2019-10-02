@@ -32,6 +32,6 @@ for coeff in labels:
     step=step+1
 
 print(train_x)
-print("# of training  ", train_x.shape[0]) #2000
+print("# of training  ", train_x.shape[0]) 
 np.save("train_x.npy", train_x)   
 np.save("train_y.npy", labels)

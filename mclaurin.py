@@ -1,10 +1,7 @@
 import tensorflow as tf
-from tensorflow.keras.layers import Dense, Conv1D, concatenate
+from tensorflow.keras.layers import Dense
 from tensorflow.keras import Model, Input
 from sklearn.model_selection import train_test_split
-from tensorflow.keras.losses import categorical_crossentropy
-from keras.preprocessing.image import ImageDataGenerator
-from keras.utils.np_utils import to_categorical
 import matplotlib.pyplot as plt
 import numpy as np
 #_______________________________________________________________________________
@@ -23,7 +20,6 @@ def McLaurin():
   fc = Dense(200, activation="softsign")(fc)
   fc = Dense(80, activation="softsign")(fc)
   fc = Dense(32, activation="softsign")(fc)
-  #fc = Dense(12, activation="softsign")(fc)
   output = Dense(4, activation='linear')(fc)
   model=Model([input_vector], output)
   model.compile(loss='MSE', optimizer="RMSprop")
@@ -37,8 +33,8 @@ model = McLaurin()
 train_x, validation_x, train_y, validation_y = train_test_split(train_x,train_y,test_size=0.2,random_state=0)
 #_______________________________________________________________________________
 #Preparo i dati per l'addestramento della rete
-EPOCHS=100
-BATCH_SIZE=128
+EPOCHS=300
+BATCH_SIZE=256
 steps_per_epoch = train_x.shape[0]//BATCH_SIZE
 validation_steps = validation_y.shape[0]//BATCH_SIZE
 #_______________________________________________________________________________

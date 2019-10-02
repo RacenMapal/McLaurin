@@ -9,8 +9,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 #_______________________________________________________________________________
 #Caricamento dati
-validation_x=np.load("validation_x.npy", allow_pickle=True)
-validation_y=np.load("validation_y.npy", allow_pickle=True)
 train_x=np.load("train_x.npy", allow_pickle=True)
 train_y=np.load("train_y.npy", allow_pickle=True)
 test_x=np.load("test_x.npy", allow_pickle=True)
@@ -20,12 +18,12 @@ test_y=np.load("test_y.npy", allow_pickle=True)
 def McLaurin():
   input_vector = Input(shape=(200))
   fc = Dense(500, activation="softsign")(input_vector)
-  fc = Dense(1250, activation="softsign")(fc)
+  fc = Dense(1500, activation="softsign")(fc)
   fc = Dense(500, activation="softsign")(fc)
   fc = Dense(200, activation="softsign")(fc)
-  fc = Dense(75, activation="softsign")(fc)
-  fc = Dense(28, activation="softsign")(fc)
-  fc = Dense(10, activation="softsign")(fc)
+  fc = Dense(80, activation="softsign")(fc)
+  fc = Dense(32, activation="softsign")(fc)
+  #fc = Dense(12, activation="softsign")(fc)
   output = Dense(4, activation='linear')(fc)
   model=Model([input_vector], output)
   model.compile(loss='MSE', optimizer="RMSprop")
@@ -34,6 +32,9 @@ def McLaurin():
 #_______________________________________________________________________________
 #Chiamo la funzione per definire il modello
 model = McLaurin()
+#_______________________________________________________________________________
+#DIVIDO I DATI IN TRAIN E VALIDATION
+train_x, validation_x, train_y, validation_y = train_test_split(train_x,train_y,test_size=0.2,random_state=0)
 #_______________________________________________________________________________
 #Preparo i dati per l'addestramento della rete
 EPOCHS=100
@@ -62,4 +63,3 @@ plt.show()
 print(model.evaluate(test_x,test_y))
 #_________________________________________________________________
 model.save("McLaurin.h5")
-

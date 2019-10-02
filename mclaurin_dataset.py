@@ -2,17 +2,20 @@ import numpy as np
 #DATASET
 '''
 input alla rete neurale McLaurin: 
-a0+(a1*x)+(a2*x^2)+(a3*x^3) per x = -1,-0.9,...,1 ---->200 campioni di questa funzione
+a0+(a1*x)+(a2*x^2)+(a3*x^3) per x = -1,-0.9,...,1 (21 numeri campione)
 
 output desiderato:
 (a0,a1,a2,a3)
 '''
 '''
+Per la compressione delle reti neurali inizializzare con distribuzione uniforme
 random.rand --->distribuzione uniforme
-random.randn--->distribuzione normale
+random.randn--->distribuzioine normale
 '''
-labels=np.array(np.random.randn(1000,4), dtype=np.float32)
-train_x=np.zeros(shape=(1000,200),dtype=np.float32)
+normal_labels=np.array(np.random.randn(10000,4), dtype=np.float32)
+uniform_labels = np.array(np.random.randn(10000,4), dtype=np.float32)
+labels = np.concatenate((normal_labels, uniform_labels))
+train_x=np.zeros(shape=(20000,200),dtype=np.float32)
 step=0
 for coeff in labels:
     n=0
@@ -24,9 +27,8 @@ for coeff in labels:
       if(n==200):
         break
       x=round(x+0.01,2)  
-    print(campioni)
-    train_x[step]=campioni
     print(step)
+    train_x[step]=campioni
     step=step+1
 
 print(train_x)

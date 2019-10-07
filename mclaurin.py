@@ -33,8 +33,8 @@ model = McLaurin()
 train_x, validation_x, train_y, validation_y = train_test_split(train_x,train_y,test_size=0.2,random_state=0)
 #_______________________________________________________________________________
 #Preparo i dati per l'addestramento della rete
-EPOCHS=300
-BATCH_SIZE=256
+EPOCHS=100
+BATCH_SIZE=128
 steps_per_epoch = train_x.shape[0]//BATCH_SIZE
 validation_steps = validation_y.shape[0]//BATCH_SIZE
 #_______________________________________________________________________________
